@@ -9,7 +9,7 @@ usuario = str(input('Você é um Representante ou Cliente? ')).upper().strip()
 if usuario == "REPRESENTANTE":
     nome_rep = str(input('Digite seu nome completo: '))
     cpf_rep = int(input('Dgite seu CPF: '))
-    nascimento_rep = str(input('Digite sua data de nascimento: '))
+    idade_rep = str(input('Digite sua idade: '))
     razao_rep = str(input('Digite a Razão Social da sua Empresa: '))
     cnpj_rep = str(input('Digite seu CNPJ: '))
     tel_rep = str(input('Digite seu Telefone: '))
@@ -31,7 +31,7 @@ if usuario == "REPRESENTANTE":
 elif usuario == "CLIENTE":
     nome_cliente = str(input('Digite seu nome completo: '))
     cpf_cliente = int(input('Dgite seu CPF: '))
-    nascimento_cliente = str(input('Digite sua data de nascimento: '))
+    idade_cliente = str(input('Digite sua idade: '))
     razao_cliente = str(input('Digite a Razão Social da sua Empresa: '))
     cnpj_cliente = str(input('Digite seu CNPJ: '))
     tel_cliente = str(input('Digite seu Telefone: '))
