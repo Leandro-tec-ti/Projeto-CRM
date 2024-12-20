@@ -16,7 +16,8 @@ usuarios = [
                 "bairro": "Centro",
                 "rua": "Rua A",
                 "numero": "123",
-                "complemento": "Sala 1"
+                "complemento": "Sala 1",
+                "senha": "1234"
             }
         }
     },
@@ -36,7 +37,8 @@ usuarios = [
                 "bairro": "Copacabana",
                 "rua": "Rua B",
                 "numero": "456",
-                "complemento": "Apartamento 12"
+                "complemento": "Apartamento 12",
+                "senha": "1234"
             }
         }
     },
@@ -56,7 +58,8 @@ usuarios = [
                 "bairro": "Savassi",
                 "rua": "Rua C",
                 "numero": "789",
-                "complemento": "Loja 5"
+                "complemento": "Loja 5",
+                "senha": "1234"
             }
         }
     },
@@ -76,7 +79,8 @@ usuarios = [
                 "bairro": "Itaim Bibi",
                 "rua": "Rua D",
                 "numero": "321",
-                "complemento": "Conjunto 20"
+                "complemento": "Conjunto 20",
+                "senha": "1234"
             }
         }
     },
@@ -96,7 +100,8 @@ usuarios = [
                 "bairro": "Boa Vista",
                 "rua": "Rua E",
                 "numero": "654",
-                "complemento": "Andar 3"
+                "complemento": "Andar 3",
+                "senha": "1234"
             }
         }
     }

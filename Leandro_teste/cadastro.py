@@ -49,6 +49,7 @@ if usuario == "REPRESENTANTE":
                 print("Número:", resp.get("numero",))
                 print("Telefone:", resp.get("telefone"))
                 print("E-mail:", resp.get("email"))
+                senha_rep = str(input("Crie uma senha: "))
 
             else:
                 print("Erro ao consultar o CNPJ. Verifique o número do CNPJ ou a conexão.")
@@ -59,7 +60,7 @@ if usuario == "REPRESENTANTE":
             cnpj_rep = str(input('Digite seu CNPJ: '))
             razao_rep = str(input('Digite a Razão Social da sua Empresa: '))
             tel_rep = str(input('Digite seu Telefone: '))
-            email_rep = str(input('Digite seu Email: '))
+            
             cep_rep = str(input("Digite seu CEP: ")) 
             url = f"https://viacep.com.br/ws/{cep_rep}/json/"
             resposta = requests.get(url)
@@ -80,11 +81,11 @@ if usuario == "REPRESENTANTE":
                     bairro_rep = str(input("Bairro: "))
                     rua_rep = str(input("Rua: "))
                     num_rua_rep = int(input("Digite o número: "))
-                    complemento_rep = str(input('Complemento: '))
-                    break
-            
-
-# Dados do Cliente
+                    complemento_rep = str(input('Complemento: '))          
+        email_rep = str(input('Digite seu Email: '))
+        senha_rep = str(input("Crie uma senha: "))
+        break
+        # Dados do Cliente
 if usuario == "CLIENTE":
     nome_cliente = str(input('Digite seu nome: '))
     sobrenome_cliente = str(input('Seu sobrenome: '))
