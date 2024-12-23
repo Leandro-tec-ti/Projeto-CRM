@@ -8,13 +8,17 @@ app.secret_key = 'chave_flask_super_secreta'  # Necessário para usar session
 def index(): #<<<--- Executando quando a rota for acessada
     return render_template('index.html') #<<<--- renderizando HTML, pegando um arquivo HTML e convertendo para o navegador exibir.
 
+
                                                     #GET= envia dados para URL para fins de consulta, não altera dados
 @app.route('/cadastro', methods=['GET', 'POST'])    #POST= usadpo para enviar dados criando e alterando
 def cadastro():
     if request.method == 'POST':
         usuario = request.form.get('usuario')
         senha = request.form.get('senha')
+        print(f"o email é: {usuario}")
+        print(f'a senha é: {senha}')
 
+        return redirect(url_for('index'))
 
 
 if __name__ == '__main__' :
