@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RotaVendas</title>
-    <link rel="shortcut icon" href="Leandro_teste/logo e tela/imagens/logo transparente.png">
+    <link rel="shortcut icon" href="logo transparente.png">
     <!-- Link para a biblioteca de ícones Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
@@ -119,9 +119,9 @@
     <script>
         let currentImageIndex = 0;
         const images = [
-            ['sustentabilidade/imagem/sustentabilidadeimg1.png', 'sustentabilidade/imagem/sustentabilidadeimg2.png', 'sustentabilidade/imagem/sustentabilidadeimg3.png'],
-            ['servicos/imagem/servicosimg2.png', 'servicos/imagem/servicosimg3.png', 'servicos/imagem/servicosimg4.png'],
-            ['tecnologia/imagem/tecnologiaimg1.png', 'tecnologia/imagem/tecnologiaimg2.png', 'tecnologia/imagem/tecnologiaimg3.png']
+            ['sustentabilidadeimg1.png', 'sustentabilidadeimg2.png', 'sustentabilidadeimg3.png'],
+            ['servicosimg2.png', 'servicosimg3.png', 'servicosimg4.png'],
+            ['tecnologiaimg1.png', 'tecnologiaimg2.png', 'tecnologiaimg3.png']
         ];
         
         function showContent(content, background) {
@@ -150,25 +150,26 @@
                 <li onclick="showContent('<h2>Bem-vindo à Rota Vendas</h2><p>&quot;Transformando caminhos complexos em rotas claras: Inovação tecnológica para otimizar sua logística e impulsionar suas vendas.&quot;</p>', 'linear-gradient(to right, #ff7e5f, #feb47b)')">
                     <i class="fas fa-home"></i> Home
                 </li>
-                <li onclick="showContent('<h3>Empresa</h3><p>Somos um grupo com o objetivo de criar um sistema que pudesse gerar emprego e renda por todo o Brasil. E, com o intuito de otimização de processos para Indústrias e empresas que atuam em diversos setores, criamos a Rota Vendas.</p><p>Temos um relacionamento duradouro com nossos clientes que atuam nos mais diversos setores econômicos, como: Bens de consumo, alimentício, Químico, Papel e celulose, automotivo e tecnologia.</p>', 'linear-gradient(to right, #43cea2, #185a9d)')">Empresa</li>
-                <li onclick="showContent('<h3>Serviços</h3><p>A Rota Vendas chegou ao mercado para  criar um meio de aprimorar a comunicação entre indÚstrias e seus clientes lojistas, através de representantes de vendas, utilizando aplicativos e sites.</P><P>Pedidos online: agora os seus cliente tem autonomia para realizar o seu pedido diretamente para a Indústria;</P><P>Rota Vendas Predict: além dos produtos e da comodidade, agora você pode oferecer aos clientes, previsibilidade. Com Predict, os clientes realizam seus pedidos online e são avisados sobre o período em que elas serão entregues. Assim, conseguem organizar seus estoques e não ocorrer conflitos em sua entrega. Um serviço inovador que trará abrangência, previsibilidade, eficiência e diminuição do insucesso de entrega;</P><P>Dashboard Rota Vendas: desta forma, o promotor de vendas e a indústria recebe em tempo real os pedido e a comissão de vendas que será prevista para repasse;</P><P>Notificação de estoque de segurança: uma forma de assegurar que a indústria não ficará com estoque zero, sendo notificado ao chegar no estoque de segurança.</p>', 'linear-gradient(to right, #43cea2, #185a9d)')">Serviços</li>
-                <li onclick="showContent('<h3>Sustentabilidade</h3><p>Somos uma empresa de tecnologia que adotamos várias práticas para ser mais sustentável e reduzir o impacto ambiental.<p></P>Eficiência Energética: Utilizamos equipamentos e servidores que consomem menos energia e implementamos práticas de eficiência energética nos escritórios e data centers;</p><p>Energias Renováveis: Investimos em fontes de energia renovável, como solar e eólica, para alimentar as operações da empresa;</p><p>Redução de Resíduos: Implementamos programas de reciclagem e reutilização de materiais, além de reduzir o uso de plásticos e outros materiais não biodegradáveis;</p><p>Teletrabalho: Incentivamos o trabalho remoto para os nossos colaboradores, desta forma, reduzimos a necessidade de deslocamentos e, consequentemente, a emissão de gases de efeito estufa;</p><p>Educação e Conscientização: Promovemos a conscientização ambiental entre os funcionários e clientes, incentivando práticas sustentáveis no dia a dia;</p><p>Inovação Verde: Investir em pesquisa e desenvolvimento de tecnologias que ajudem a resolver problemas ambientais;</p><p>Transparência: Divulgamos relatórios de sustentabilidade e mantemos a transparência sobre as práticas ambientais da empresa.</p>', 'linear-gradient(to right, #43cea2, #185a9d)')">Sustentabilidade</li>
-                <li onclick="showContent('<h3>Tecnologia</h3><p>APP Rota Vendas.</p><p>A Rota Vendas usa a tecnologia para facilitar todas as pontas. Para isso conta com App RVlog, em que o cliente e a indústria atualiza o status da entrega em real time ao inserir o número do pedido gerado.</p><p>O RVfinance, sistema que permite que a Industria e os promotores de vendas acompanhem o status dos pedidos de compras, previsão de comissão e histórico de pedido dos seus clientes.</p><p>Integração:</p><p>Contamos ainda com APIs para integração no seu e-commerce.</p><p>Seja um cliente Rota Vendas de forma rápida e fácil.</p>', 'linear-gradient(to right, #43cea2, #185a9d)')">Tecnologia</li>
-                <li onclick="showContent('<h3>Nossa Gente</h3><p>Trabalhe Conosco<br>Venha fazer parte da nossa equipe!<br><a href=\#>Clique aqui para anexar o seu currículo</a></p>', 'linear-gradient(to right, #43cea2, #185a9d)')">Nossa Gente</li>
-                <li onclick="showContent('<h3>LGPD</h3><p>Para cumprimento da Lei e em respeito a privacidade e segurança das informações dos nossos cliente, visando conferir ainda mais clareza e transparência sobre como a Rota Vendas realiza o tratamento de dados pessoais.<br><br>Como acessamos suas informações;<br>Quais são os dados pessoas tratados e porque precisamos deles;<br>Em quais situações podemos compartilhar suas informações;<br>Como protegemos seus dados pessoais;<br>Quais são os seus direitos e como exercê-los.<br><br>Este aviso de privacidade atende aos requisitos previstos na Lei Geral de Proteção de Dados.<br><br>Em caso de eventuais dúvida, fique à vontade em contatar diretamente nosso encarregado pelo Tratamento de Dados Pessoais <a href=\#>clique aqui</a>.<br><br><a href=LGPD/guia_lgpd.pdf>Clique aqui e leia a Política de Privacidade completa.</a></p>', 'linear-gradient(to right, #43cea2, #185a9d)')">LGPD</li>
-                <li onclick="showContent('<h3>Atendimento</h3><p><strong>Fale Conosco</strong><div class=\'form-container\'><input type=\'text\' name=\'nome\' placeholder=\'Nome completo\' required><input type=\'email\' name=\'email\' placeholder=\'E-mail\' required><input type=\'text\' name=\'telefone\' placeholder=\'Telefone\' required></div><br><br><button type=\'submit\'>Enviar</button><br><br><strong>Contato do SAC</strong><br>0800 001 1000</p>', 'linear-gradient(to right, #43cea2, #185a9d)')">Atendimento</li>
-            </ul>
+            </li>
+            <li onclick="showContent('<h3>Empresa</h3><p>Somos um grupo com o objetivo de criar um sistema que pudesse gerar emprego e renda por todo o Brasil. E, com o intuito de otimização de processos para Indústrias e empresas que atuam em diversos setores, criamos a Rota Vendas.</p><p>Temos um relacionamento duradouro com nossos clientes que atuam nos mais diversos setores econômicos, como: Bens de consumo, alimentício, Químico, Papel e celulose, automotivo e tecnologia.</p>', 'linear-gradient(to right, #43cea2, #185a9d)')">Empresa</li>
+            <li onclick="showContent('<h3>Serviços</h3><p>A Rota Vendas chegou ao mercado para  criar um meio de aprimorar a comunicação entre indÚstrias e seus clientes lojistas, através de representantes de vendas, utilizando aplicativos e sites.</P><P>Pedidos online: agora os seus cliente tem autonomia para realizar o seu pedido diretamente para a Indústria;</P><P>Rota Vendas Predict: além dos produtos e da comodidade, agora você pode oferecer aos clientes, previsibilidade. Com Predict, os clientes realizam seus pedidos online e são avisados sobre o período em que elas serão entregues. Assim, conseguem organizar seus estoques e não ocorrer conflitos em sua entrega. Um serviço inovador que trará abrangência, previsibilidade, eficiência e diminuição do insucesso de entrega;</P><P>Dashboard Rota Vendas: desta forma, o promotor de vendas e a indústria recebe em tempo real os pedido e a comissão de vendas que será prevista para repasse;</P><P>Notificação de estoque de segurança: uma forma de assegurar que a indústria não ficará com estoque zero, sendo notificado ao chegar no estoque de segurança.</p>', 'linear-gradient(to right, #43cea2, #185a9d)')">Serviços</li>
+            <li onclick="showContent('<h3>Sustentabilidade</h3><p>Somos uma empresa de tecnologia que adotamos várias práticas para ser mais sustentável e reduzir o impacto ambiental.<p></P>Eficiência Energética: Utilizamos equipamentos e servidores que consomem menos energia e implementamos práticas de eficiência energética nos escritórios e data centers;</p><p>Energias Renováveis: Investimos em fontes de energia renovável, como solar e eólica, para alimentar as operações da empresa;</p><p>Redução de Resíduos: Implementamos programas de reciclagem e reutilização de materiais, além de reduzir o uso de plásticos e outros materiais não biodegradáveis;</p><p>Teletrabalho: Incentivamos o trabalho remoto para os nossos colaboradores, desta forma, reduzimos a necessidade de deslocamentos e, consequentemente, a emissão de gases de efeito estufa;</p><p>Educação e Conscientização: Promovemos a conscientização ambiental entre os funcionários e clientes, incentivando práticas sustentáveis no dia a dia;</p><p>Inovação Verde: Investir em pesquisa e desenvolvimento de tecnologias que ajudem a resolver problemas ambientais;</p><p>Transparência: Divulgamos relatórios de sustentabilidade e mantemos a transparência sobre as práticas ambientais da empresa.</p>', 'linear-gradient(to right, #43cea2, #185a9d)')">Sustentabilidade</li>
+            <li onclick="showContent('<h3>Tecnologia</h3><p>APP Rota Vendas.</p><p>A Rota Vendas usa a tecnologia para facilitar todas as pontas. Para isso conta com App RVlog, em que o cliente e a indústria atualiza o status da entrega em real time ao inserir o número do pedido gerado.</p><p>O RVfinance, sistema que permite que a Industria e os promotores de vendas acompanhem o status dos pedidos de compras, previsão de comissão e histórico de pedido dos seus clientes.</p><p>Integração:</p><p>Contamos ainda com APIs para integração no seu e-commerce.</p><p>Seja um cliente Rota Vendas de forma rápida e fácil.</p>', 'linear-gradient(to right, #43cea2, #185a9d)')">Tecnologia</li>
+            <li onclick="showContent('<h3>Nossa Gente</h3><p>Trabalhe Conosco<br>Venha fazer parte da nossa equipe!<br><a href=\#>Clique aqui para anexar o seu currículo</a></p>', 'linear-gradient(to right, #43cea2, #185a9d)')">Nossa Gente</li>
+            <li onclick="showContent('<h3>LGPD</h3><p>Para cumprimento da Lei e em respeito a privacidade e segurança das informações dos nossos cliente, visando conferir ainda mais clareza e transparência sobre como a Rota Vendas realiza o tratamento de dados pessoais.<br><br>Como acessamos suas informações;<br>Quais são os dados pessoas tratados e porque precisamos deles;<br>Em quais situações podemos compartilhar suas informações;<br>Como protegemos seus dados pessoais;<br>Quais são os seus direitos e como exercê-los.<br><br>Este aviso de privacidade atende aos requisitos previstos na Lei Geral de Proteção de Dados.<br><br>Em caso de eventuais dúvida, fique à vontade em contatar diretamente nosso encarregado pelo Tratamento de Dados Pessoais <a href=\#>clique aqui</a>.<br><br><a href=LGPD/guia_lgpd.pdf>Clique aqui e leia a Política de Privacidade completa.</a></p>', 'linear-gradient(to right, #43cea2, #185a9d)')">LGPD</li>
+            <li onclick="showContent('<h3>Atendimento</h3><p><strong>Fale Conosco</strong><div class=\'form-container\'><input type=\'text\' name=\'nome\' placeholder=\'Nome completo\' required><input type=\'email\' name=\'email\' placeholder=\'E-mail\' required><input type=\'text\' name=\'telefone\' placeholder=\'Telefone\' required></div><br><br><button type=\'submit\'>Enviar</button><br><br><strong>Contato do SAC</strong><br>0800 001 1000</p>', 'linear-gradient(to right, #43cea2, #185a9d)')">Atendimento</li>
+        </ul>
         </div>
         <div class="main-content">
             <div class="header">
-                <img src="Leandro_teste/logo e tela/imagens/logo transparente.png" width="200" height="200"><h1>Rota Vendas</h1>
+                <img src="logo transparente.png" width="200" height="200"><h1>Rota Vendas</h1>
                 <div class="login-buttons">
                     <button onclick="window.location.href='area_representante.html'">Área do Representante</button>
-                    <button onclick="window.location.href='area_do_cliente'">Área do Cliente</button>
+                    <button onclick="window.location.href='area_cliente.html'">Área do Cliente</button>
                 </div>
             </div>
             <div id="content" class="content">
-                <h2>Bem-vindo a Rota Vendas</h2>
+                <h2>Bem-vindo à Rota Vendas</h2>
                 <p>"Transformando caminhos complexos em rotas claras: Inovação tecnológica para otimizar sua logística e impulsionar suas vendas."</p>
             </div>
             <div class="image-slider">
@@ -179,9 +180,7 @@
         </div>
     </div>
     <div class="footer">
-        <p>&copy; 2024 Grupo DDL. Todos os direitos reservados.</p>
+        <p>&copy; 2024 RotaVendas. Todos os direitos reservados.</p>
     </div>
 </body>
 </html>
-
-
