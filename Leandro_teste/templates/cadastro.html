@@ -3,15 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validação de Dados</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Cadastro</title>
+    <link rel="shortcut icon" href="PROJETO-CRM/empresa/imagem/logo_transparente.png">
+    <!-- Link para a biblioteca de ícones Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
             margin: 0;
             padding: 20px;
             background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #317c92;
+            color: white;
+            padding: 20px;
+            width: 100%;
+        } .header img { width: 100px; height: auto; margin-right: 20px; /* Espaço entre a logo e o título */ }
+        .header h1 {
+            margin: 10px 0 0 0;
         }
         form {
             background: #fff;
@@ -19,7 +36,8 @@
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             max-width: 500px;
-            margin: auto;
+            width: 100%;
+            margin: 20px 0;
         }
         label {
             display: block;
@@ -34,24 +52,29 @@
             border-radius: 5px;
         }
         button {
-            background-color: #007bff;
+            background-color: #e39f24;
             color: white;
             border: none;
             cursor: pointer;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #2980b9;
         }
         .result {
             margin-top: 20px;
             padding: 15px;
             background-color: #e9ecef;
             border-radius: 5px;
+            width: 100%;
+            max-width: 500px;
         }
     </style>
 </head>
 <body>
-    <h1>Cadastro</h1>
+    <div class="header">
+        <img src="logo transparente.png" alt="Logo Rota Vendas">
+        <h1>Cadastro</h1>
+    </div>
     <form action="/cadastro" id="formulario" method="POST">
         <label for="usuario">Selecione:</label>
         <select id="usuario" name="usuario" required>
@@ -75,10 +98,10 @@
         <label for="cnpj">CNPJ:</label>
         <input type="text" id="cnpj" name="cnpj" placeholder="Apenas números" required>
 
-        <label for="sobrenome">E-mail:</label>
+        <label for="email">E-mail:</label>
         <input type="text" id="email" name="email" required>
 
-        <label for="sobrenome">Crie sua senha:</label>
+        <label for="senha">Crie sua senha:</label>
         <input type="text" id="senha" name="senha" placeholder="Apenas números" required>
         
         <button type="button" onclick="enviarDados()">Enviar</button>
