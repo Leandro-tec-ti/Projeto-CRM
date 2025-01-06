@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="img_titulo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
     <style>
         body {
             font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
@@ -94,10 +95,10 @@
             </div>
             <div class="login-container">
                 <img src="servicosimg4.png" alt="Imagem Login">
-                <form method="POST" class="login-form">
+                <form action="/login_cliente" method="POST" class="login-form">
                     <div class="mb-3">
-                        <label for="usuario" class="form-label">Usuário</label>
-                        <input type="text" id="usuario" name="usuario" class="form-control" required>
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" id="nome" name="nome" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="senha" class="form-label">Senha</label>

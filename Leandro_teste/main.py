@@ -20,7 +20,9 @@ def login():
         # Validando as login e senha do usuário
         for usuario in usuarios:
             if usuario['nome'] == nome and usuario['senha'] == senha:
+
                 return render_template('home.html')
+            
         flash('USUÁRIO INVÁLIDO')
         return redirect('/')
 
