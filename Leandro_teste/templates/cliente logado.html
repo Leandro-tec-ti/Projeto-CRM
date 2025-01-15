@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Pedidos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f6fcfc;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #317c92;
+            color: #fff;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .sidebar p {
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 0.9rem;
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #2c3e50;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            background-color: #e39f24;
+        }
+
+        main {
+            margin-left: 270px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .top-menu {
+            display: none;
+            background-color: #317c92;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .top-menu button {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .top-menu button:hover {
+            background-color: #e39f24;
+        }
+
+        .items-container {
+            display: none;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .item img {
+            width: 150px;
+            height: 150px;
+            border-radius: 5px;
+        }
+
+        .item button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #317c92;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .item button:hover {
+            background-color: #e39f24;
+        }
+
+        .cart {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .cart-items {
+            margin-top: 10px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .cart-items li {
+            background-color: #e39f24;
+            margin: 5px 0;
+            padding: 5px;
+            border-radius: 5px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Olá, Day!</h2>
+        <p>Barra da Tijuca 001</p>
+        <a id="btnPedidos">Pedidos</a>
+        <a href="#">Página Inicial</a>
+        <a href="#">Consulte aqui o seu estoque</a>
+        <a href="#">Nota Fiscal dos pedidos gerados</a>
+        <div class="image-row">
+          <img src="Leandro_teste/static/images/logo_transparente.png" alt="Imagem 1">
+        </div>
+    </div>
+
+    <main>
+        <h1>Tela de Pedidos</h1>
+        <p>Bem-vindo ao sistema de pedidos. Aqui você pode gerenciar suas compras e conferir seu estoque.</p>
+        
+        <!-- Menu Dinâmico -->
+        <div class="top-menu" id="menuBar">
+            <button onclick="showItems('category1')">Categoria 1</button>
+            <button onclick="showItems('category2')">Categoria 2</button>
+            <button onclick="showItems('category3')">Categoria 3</button>
+        </div>
+
+        <!-- Itens Dinâmicos -->
+        <div class="items-container" id="itemsContainer">
+            <!-- Os itens serão carregados dinamicamente aqui -->
+        </div>
+
+        <!-- Carrinho de Compras -->
+        <div class="cart" id="cart">
+            <h3>Seu Carrinho:</h3>
+            <ul class="cart-items" id="cartItems">
+                <!-- Itens adicionados aparecerão aqui -->
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        const items = {
+            category1: [
+                { name: 'Item 1A', image: 'https://via.placeholder.com/150' },
+                { name: 'Item 1B', image: 'https://via.placeholder.com/150' }
+            ],
+            category2: [
+                { name: 'Item 2A', image: 'https://via.placeholder.com/150' },
+                { name: 'Item 2B', image: 'https://via.placeholder.com/150' }
+            ],
+            category3: [
+                { name: 'Item 3A', image: 'https://via.placeholder.com/150' },
+                { name: 'Item 3B', image: 'https://via.placeholder.com/150' }
+            ]
+        };
+
+        const cart = [];
+
+        document.getElementById('btnPedidos').addEventListener('click', () => {
+            const menuBar = document.getElementById('menuBar');
+            menuBar.style.display = menuBar.style.display === 'none' || menuBar.style.display === '' ? 'block' : 'none';
+        });
+
+        function showItems(category) {
+            const itemsContainer = document.getElementById('itemsContainer');
+            itemsContainer.innerHTML = ''; // Limpa os itens existentes
+            items[category].forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
+
+                const img = document.createElement('img');
+                img.src = item.image;
+
+                const name = document.createElement('p');
+                name.textContent = item.name;
+
+                const button = document.createElement('button');
+                button.textContent = 'Adicionar ao Carrinho';
+                button.onclick = () => addToCart(item);
+
+                itemDiv.appendChild(img);
+                itemDiv.appendChild(name);
+                itemDiv.appendChild(button);
+
+                itemsContainer.appendChild(itemDiv);
+            });
+            itemsContainer.style.display = 'flex';
+        }
+
+        function addToCart(item) {
+            cart.push(item);
+            const cartItems = document.getElementById('cartItems');
+            const li = document.createElement('li');
+            li.textContent = item.name;
+            cartItems.appendChild(li);
+        }
+    </script>
+</body>
+</html>
+
+
