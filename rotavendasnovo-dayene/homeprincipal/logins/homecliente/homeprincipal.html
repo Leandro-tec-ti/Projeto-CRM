@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="scriptprincipal.js" defer></script>
+    <title>RotaVendas</title>
+    <link rel="icon" type="image/x-icon" href="bola.png">
+    <link rel="stylesheet" href="styleprincipal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir Menu Lateral">
+        <i class="fas fa-bars"></i>
+    </button>
+     
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo-container">
+                <img src="logoletrabranca.png" alt="Logo da RotaVendas">
+            
+            </div>
+            <div class="nav-buttons">
+                <!-- Botão para login do cliente -->
+                <button class="nav-button" onclick="window.location.href='logins/logincliente.html'">
+                    <i class="fas fa-user"></i> Área do Cliente
+                </button>
+                <!-- Botão para cadastro -->
+                <button class="nav-button" onclick="window.location.href='cadastro/cadastre-se.html'">
+                    <i class="fas fa-pen-to-square"></i> Cadastre-se
+                </button>
+            </div>
+            
+        </div>
+    </nav>
+    
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="menu-item" onclick="showContent('empresa')">
+                <i class="fas fa-building"></i>
+                <span>Empresa</span>
+            </div>
+            <div class="menu-item" onclick="showContent('servicos')">
+                <i class="fas fa-cogs"></i>
+                <span>Serviços</span>
+            </div>
+            <div class="menu-item" onclick="showContent('sustentabilidade')">
+                <i class="fas fa-leaf"></i>
+                <span>Sustentabilidade</span>
+            </div>
+            <div class="menu-item" onclick="showContent('tecnologia')">
+                <i class="fas fa-microchip"></i>
+                <span>Tecnologia</span>
+            </div>
+            <div class="menu-item" onclick="showContent('nossa-gente')">
+                <i class="fas fa-users"></i>
+                <span>Nossa Gente</span>
+            </div>
+            <div class="menu-item" onclick="showContent('lgpd')">
+                <i class="fas fa-shield-alt"></i>
+                <span>LGPD</span>
+            </div>
+            <div class="menu-item" onclick="showContent('atendimento')">
+                <i class="fas fa-headset"></i>
+                <span>Atendimento</span>
+            </div>
+        </div>
+
+        <!-- Modal Overlay -->
+        <div id="modal-overlay" class="modal-overlay" onclick="closeModal()">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <span class="close-button" onclick="closeModal()">&times;</span>
+                
+                <div id="empresa" class="content-section">
+                    <h2>Empresa</h2>
+                    <p>A Rota Vendas foi criada com o propósito de impulsionar a geração de emprego e renda em todo o Brasil, aliada à otimização de processos para indústrias e empresas de diversos setores.  
+                    Com um relacionamento sólido e duradouro, atendemos clientes nos mais variados segmentos econômicos, como bens de consumo, alimentício, químico, papel e celulose, automotivo e tecnologia.                      
+                </div>
+
+                <div id="servicos" class="content-section">
+                    <h2>Serviços</h2>
+                    <p>Soluções Inovadoras para o Mercado:</p> 
+                    <p> A Rota Vendas foi criada para aprimorar a comunicação entre indústrias e seus clientes lojistas por meio de representantes comerciais, utilizando aplicativ6os e plataformas online.</p>
+                    <p>Pedidos Online:</p>  
+                    <p>Ofereça autonomia aos seus clientes para realizarem pedidos diretamente para a indústria de forma simples e prática.</p> 
+                    <p>Rota Vendas Predict:</p> 
+                    <p>Proporcione previsibilidade e organização aos seus clientes. Com a funcionalidade Predict, eles podem realizar pedidos online e receber notificações sobre o período de entrega, permitindo uma melhor gestão de estoques e evitando conflitos logísticos. Este serviço inovador combina abrangência, eficiência e redução de falhas na entrega.</p>
+                    <p>Notificação de Estoque de Segurança:</p>
+                    <p>Garanta que a indústria não alcance níveis críticos de estoque. Ao atingir o limite de segurança, notificações automáticas são enviadas, permitindo uma reposição ágil e eficaz.</p>
+                </div>
+
+                <div id="sustentabilidade" class="content-section">
+                    <h2>Sustentabilidade</h2>
+                    <p><p>Somos uma empresa de tecnologia que adotamos várias práticas para ser mais sustentável e reduzir o impacto ambiental.<p></p>Eficiência Energética: Utilizamos equipamentos e servidores que consomem menos energia e implementamos práticas de eficiência energética nos escritórios e data centers;</p><p>Energias Renováveis: Investimos em fontes de energia renovável, como solar e eólica, para alimentar as operações da empresa;</p><p>Redução de Resíduos: Implementamos programas de reciclagem e reutilização de materiais, além de reduzir o uso de plásticos e outros materiais não biodegradáveis;</p><p>Teletrabalho: Incentivamos o trabalho remoto para os nossos colaboradores, desta forma, reduzimos a necessidade de deslocamentos e, consequentemente, a emissão de gases de efeito estufa;</p><p>Educação e Conscientização: Promovemos a conscientização ambiental entre os funcionários e clientes, incentivando práticas sustentáveis no dia a dia;</p><p>Inovação Verde: Investir em pesquisa e desenvolvimento de tecnologias que ajudem a resolver problemas ambientais;</p><p>Transparência: Divulgamos relatórios de sustentabilidade e mantemos a transparência sobre as práticas ambientais da empresa.</p></p>
+                </div>
+
+                <div id="tecnologia" class="content-section">
+                    <h2>Tecnologia</h2>
+                    <p>APP Rota Vendas.</p><p>A Rota Vendas usa a tecnologia para facilitar todas as pontas. Para isso conta com App RVlog, em que o cliente e a indústria atualiza o status da entrega em real time ao inserir o número do pedido gerado.</p><p>O RVfinance, sistema que permite que a Industria e os promotores de vendas acompanhem o status dos pedidos de compras, previsão de comissão e histórico de pedido dos seus clientes.</p><p>Integração:</p><p>Contamos ainda com APIs para integração no seu e-commerce.</p><p>Seja um cliente Rota Vendas de forma rápida e fácil.</p>
+                </div>
+
+                <div id="nossa-gente" class="content-section">
+                    <h2>Nossa Gente</h2>
+                    <p>Trabalhe Conosco<br>Venha fazer parte da nossa equipe!<br><a href=\#>Clique aqui para anexar o seu currículo</a></p>
+                </div>
+
+                <div id="lgpd" class="content-section">
+                    <h2>LGPD</h2>
+                    <p><p>Para cumprimento da Lei e em respeito a privacidade e segurança das informações dos nossos cliente, visando conferir ainda mais clareza e transparência sobre como a Rota Vendas realiza o tratamento de dados pessoais.<br><br>Como acessamos suas informações;<br>Quais são os dados pessoas tratados e porque precisamos deles;<br>Em quais situações podemos compartilhar suas informações;<br>Como protegemos seus dados pessoais;<br>Quais são os seus direitos e como exercê-los.<br><br>Este aviso de privacidade atende aos requisitos previstos na Lei Geral de Proteção de Dados.<br><br>Em caso de eventuais dúvida, fique à vontade em contatar diretamente nosso encarregado pelo Tratamento de Dados Pessoais <a href="guia_lgpd.pdf" target="_blank" rel="noopener noreferrer">Clique aqui</a>
+                </div>
+
+                <div id="atendimento" class="content-section">
+                    <h2>Atendimento</h2>
+                    <p><p><strong>Fale Conosco</strong><div class='form-container'><input type='text' name='nome' placeholder='Nome completo' required><input type='email' name='email' placeholder='E-mail' required><input type='text' name='telefone' placeholder='Telefone' required></div><br><br><button type='submit'>Enviar</button><br><br><strong>Contato do SAC</strong><br>0800 001 1000</p></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="hero-section">
+                <h2>Bem-vindo à RotaVendas</h2>
+                <p>"Transformando caminhos complexos em rotas claras: Inovação tecnológica para otimizar sua logística e impulsionar suas vendas."</p>
+            </div>
+
+            <div class="image-slider">
+                <div class="image-box">
+                    <img src="sustentabilidadeimg1.png" alt="Sustentabilidade">
+                </div>
+                <div class="image-box">
+                    <img src="servicosimg2.png" alt="Serviços">
+                </div>
+                <div class="image-box">
+                    <img src="tecnologiaimg1.png" alt="Tecnologia">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; <span id="current-year"></span> RotaVendas. Todos os direitos reservados.</p>
+    </footer>
+    
+    <script>
+        // Toggle menu para mobile
+        function toggleMenu() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+               // Ajusta altura do container quando a janela é redimensionada
+        window.addEventListener(function() {
+            const navbar = document.querySelector('.navbar').offsetHeight;
+            const footer = document.querySelector('.footer').offsetHeight;
+            const container = document.querySelector('.container');
+            container.style.minHeight = `calc(100vh - ${navbar}px - ${footer}px)`;
+        });
+    </script>
+</body>
+</html>
