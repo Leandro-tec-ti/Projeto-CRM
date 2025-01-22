@@ -1,15 +1,23 @@
-
 [
-    {
-        "nome":"Leandro",
-        "senha":"123"
-    },
-    {
-        "nome":"Day",
-        "senha":"456"
-    },
-    {
-        "nome":"Douglas",
-        "senha":"789"
-    }
+         {
+                  "nome": "Leandro",
+                  "sobrenome": "fernandes",
+                  "nascimento": "18/12/1988",
+                  "cpf": "13187159702",
+                  "cnpj": "44521539000161",
+                  "email": "Leandro.tec.ti@hotmaol.com",
+                  "senha": "1234"
+         },
+         {
+                  "nome": "Leandro",
+                  "senha": "123"
+         },
+         {
+                  "nome": "Day",
+                  "senha": "456"
+         },
+         {
+                  "nome": "Douglas",
+                  "senha": "789"
+         }
 ]
