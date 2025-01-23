@@ -1,0 +1,99 @@
+html, body {
+    height: 100%; /* Garante que o body ocupe 100% da altura da viewport */
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Remove barras de rolagem */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/Cadastre-se.png');
+    background-size: cover;
+    background-position: top center; /* Centraliza horizontalmente e alinha no topo */
+    background-repeat: no-repeat; /* Impede repetição da imagem */
+    display: flex;
+    justify-content: flex-start; /* Alinha o formulário à esquerda */
+    align-items: flex-start; /* Posiciona o formulário no topo da página */
+    height: 100vh; /* Altura da página igual à altura da janela */
+}
+body::before {
+    content: '';
+    display: block;
+    height: 100px; /* Altura do espaço acima do formulário */
+}
+
+form {
+    flex-grow: 10; /* Permite que o formulário cresça para preencher o espaço disponível */
+    overflow-y: auto; /* Adiciona rolagem vertical se o conteúdo do formulário for maior que a altura disponível */
+}
+form {     /*ajuste do formulário*/
+    background-color: rgba(255, 255, 255, 0.638); /* Fundo com transparência para contraste */
+    padding: 50px;
+    border-radius: 10px; /* Bordas arredondadas para um estilo moderno */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+    width: 70%;
+    max-width: 450px;
+    margin-left: 115px; /* Espaçamento da borda esquerda */
+    margin-top: 110px; /* Ajusta a posição do formulário abaixo do texto "Cadastre-se" */
+    
+}
+
+label {
+    display: flex;
+    margin-bottom: 7px;
+    font-weight: bold;
+    color: #05272e;
+    font-size: 90%; /* Ajuste de tamanho da fonte */
+    position: relative; /* Permite ajustes finos com, top/left */
+    top: 50%; /* Alinha o texto verticalmente */
+    transform: translateY(-50%); /* Ajusta a posição do texto */
+    left: 10px; /* Espaçamento da borda esquerda */
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    width: flex; /* Ajusta a largura do botão automaticamente */
+    padding: 10px 20px; /* Adiciona espaçamento interno horizontal */
+    background-color: #151853; /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    border: none; /* Remove a borda do botão */
+    cursor: pointer; /* Altera o cursor ao passar por cima */
+    
+    
+    
+
+}
+button {
+    background-color: #151853;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative; /* Permite ajustes finos com, top/left */
+    top: 50%; /* Alinha o texto verticalmente */
+    transform: translateY(-10%); /* Ajusta a posição do texto */
+    
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.result {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #e9ecef95;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    display: none; /* Inicialmente oculto */
+
+}
