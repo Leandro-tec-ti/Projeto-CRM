@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title> 
+    <title>Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylelogin.css') }}">
     <link rel="icon" type="image/x-icon" href="../static/img/bola.png">
 </head>
@@ -12,7 +12,7 @@
         <div class="login-header">
             
         </div>
-        <form action="/usuario" method="POST">
+        <form method="POST">
             <div class="mb-3">
                 <label for="usuario" class="form-label">Usuário</label>
                 <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Digite seu usuário" required>
