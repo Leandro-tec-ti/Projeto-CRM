@@ -1,0 +1,160 @@
+<!DOCTYPE html> 
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylehomecliente.css">
+    <script src="scriptprincipal.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="bola.png">
+    <!-- Adicione o link do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Tela de Pedidos</title>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Olá, Day!</h2>
+        <p>Barra da Tijuca 001</p>
+        <a id="btnPedidos">Pedidos</a>
+        <a href="homeprincipal.html">Página Inicial</a>
+        <a href="#" onclick="abrirSistemaVestuario()">Consulte aqui o seu estoque</a>
+        <a href="#">Nota Fiscal dos pedidos gerados</a>
+        <div class="image-row">
+          <img src="logoletrabranca.png" alt="Imagem 1">
+        </div>
+    </div>
+
+    <main>
+        <h1>Sistema de Pedidos</h1>
+        <p>Bem-vindo ao sistema de pedidos Rota Vendas. Aqui você pode gerenciar suas compras e conferir seu estoque.</p>
+        
+        <!-- Menu Dinâmico -->
+        <div class="top-menu" id="menuBar">
+            <button onclick="showItems('category1')">adulto</button>
+            <button onclick="showItems('category2')">infantil</button>
+            <button onclick="showItems('category3')">calçados</button>
+        </div>
+
+        <!-- Itens Dinâmicos -->
+        <div class="items-container" id="itemsContainer">
+            <!-- Os itens serão carregados dinamicamente aqui -->
+        </div>
+
+        <!-- Carrinho de Compras -->
+        <div class="cart" id="cart">
+            <h3>Seu Carrinho:</h3>
+            <ul class="cart-items" id="cartItems">
+                <!-- Itens adicionados aparecerão aqui -->
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        const items = {
+            category1: [
+                { name: 'peça 1A', image: '/homeprincipal/logins/homecliente/produto.png' },
+                { name: 'peça 1B', image: '/homeprincipal/logins/homecliente/produto.png' },
+                { name: 'peça 1C', image: '/homeprincipal/logins/homecliente/produto.png' },
+                { name: 'peça 1D', image: '/homeprincipal/logins/homecliente/produto.png' }
+            ],
+            category2: [
+                { name: 'peça 2A', image: '/homeprincipal/logins/homecliente/produto.png' },
+                { name: 'peça 2B', image: '/homeprincipal/logins/homecliente/produto.png' },
+                { name: 'peça 2C', image: '/homeprincipal/logins/homecliente/produto.png' },
+                { name: 'peça 2D', image: '/homeprincipal/logins/homecliente/produto.png' },
+            ],
+            category3: [
+                { name: 'Item 3A', image: '/homeprincipal/logins/homecliente/produto.png' },
+                { name: 'Item 3B', image: '/homeprincipal/logins/homecliente/produto.png' },
+                { name: 'Item 3C', image: '/homeprincipal/logins/homecliente/produto.png' },
+                { name: 'Item 3D', image: '/homeprincipal/logins/homecliente/produto.png' }
+            ]
+        };
+
+        const cart = [];
+
+        document.getElementById('btnPedidos').addEventListener('click', () => {
+            const menuBar = document.getElementById('menuBar');
+            menuBar.classList.toggle('visible'); // Usa classe CSS para alternar a visibilidade
+        });
+
+        function showItems(category) {
+            const itemsContainer = document.getElementById('itemsContainer');
+            while (itemsContainer.firstChild) {
+                itemsContainer.removeChild(itemsContainer.firstChild); // Remove filhos diretamente para melhor desempenho
+            }
+            items[category].forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
+
+                const img = document.createElement('img');
+                img.src = item.image;
+
+                const name = document.createElement('p');
+                name.textContent = item.name;
+
+                const button = document.createElement('button');
+                button.textContent = 'Adicionar ao Carrinho';
+                button.onclick = () => addToCart(item);
+
+                itemDiv.appendChild(img);
+                itemDiv.appendChild(name);
+                itemDiv.appendChild(button);
+
+                itemsContainer.appendChild(itemDiv);
+            });
+            itemsContainer.style.display = 'flex';
+        }
+
+        function addToCart(item) {
+            if (cart.some(cartItem => cartItem.name === item.name)) {
+                alert('Este item já está no carrinho.');
+                return;
+            }
+
+            cart.push(item);
+            const cartItems = document.getElementById('cartItems');
+
+            // Criar um novo item da lista
+            const li = document.createElement('li');
+            li.textContent = item.name;
+
+            // Criar o ícone de excluir
+            const removeButton = document.createElement('i');
+            removeButton.className = 'fa fa-trash-o';
+            removeButton.style.marginLeft = '10px';
+            removeButton.style.cursor = 'pointer';
+            removeButton.onclick = () => {
+                if (confirm('Tem certeza que deseja remover este item do carrinho?')) {
+                    removeFromCart(item, li);
+                }
+            };
+
+            // Adicionar o ícone ao item da lista
+            li.appendChild(removeButton);
+
+            // Adicionar o item ao carrinho
+            cartItems.appendChild(li);
+        }
+
+        function removeFromCart(item, listItem) {
+            // Remover o item do array do carrinho
+            const index = cart.indexOf(item);
+            if (index > -1) {
+                cart.splice(index, 1);
+            }
+
+            // Remover o elemento da lista do DOM
+            listItem.remove();
+        }
+
+        function abrirSistemaVestuario() {
+            // Integração do sistema de vestuário em janela separada
+            const sistemaWindow = window.open("", "Sistema de Vestuário", "width=800,height=600");
+
+            if (!sistemaWindow) {
+                alert("Falha ao abrir a janela. Verifique se o navegador está bloqueando pop-ups.");
+                return;
+            }
+        </script>
+</body>
+</html>
