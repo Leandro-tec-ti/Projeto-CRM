@@ -4,75 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Requisição de Materiais</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleadmin.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .nav-tabs .nav-link {
-            color: #495057;
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            margin-right: 2px;
-        }
-        .nav-tabs .nav-link.active {
-            background-color: #fff;
-            border-bottom-color: transparent;
-        }
-        .toolbar {
-            background-color: #343a40;
-            padding: 10px;
-        }
-        .toolbar button {
-            margin-right: 5px;
-            background-color: transparent;
-            border: none;
-            color: white;
-            padding: 5px 10px;
-        }
-        .toolbar button:hover {
-            background-color: rgba(255,255,255,0.1);
-        }
-    </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <!-- Tabs -->
-        <ul class="nav nav-tabs mt-2">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Principal</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Anexos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">FERRAMENTAS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Localizar</a>
-            </li>
-        </ul>
-
-        <!-- Toolbar -->
-        <div class="toolbar d-flex">
-            <button title="Novo">
-                <i class="bi bi-file-earmark-plus"></i> Novo
-            </button>
-            <button title="Editar">
-                <i class="bi bi-pencil"></i> Editar
-            </button>
-            <button title="Excluir">
-                <i class="bi bi-trash"></i> Excluir
-            </button>
-            <button title="Atualizar">
-                <i class="bi bi-arrow-clockwise"></i> Atualizar
-            </button>
-            <button title="Ajuda">
-                <i class="bi bi-question-circle"></i> Ajuda
-            </button>
-            <button title="Sair">
-                <i class="bi bi-box-arrow-right"></i> Sair
-            </button>
-        </div>
-
-        <!-- Search Form -->
+     <!-- Search Form -->
         <div class="card mt-3">
             <div class="card-body">
                 <h6 class="card-subtitle mb-3 text-muted">Filtro</h6>
