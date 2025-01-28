@@ -16,7 +16,7 @@ def cadastro_page():
 def login_cliente_page():
     return render_template('login_cliente.html')
 
-@app.route('/usuario', methods=['GET'])   #<<--- rota para direcionar para a página de login do cliente
+@app.route('/usuario', methods=['POST'])   #<<--- rota para direcionar para a página de login do cliente
 def login_home_usuario():
     return render_template('usuario.html')
 
@@ -43,7 +43,6 @@ def cadastro():
     sobrenome = request.form.get('sobrenome')
     nascimento = request.form.get('nascimento')
     cpf = request.form.get('cpf')
-    cnpj = request.form.get('cnpj')
     email = request.form.get('email')
     senha = request.form.get('senha')
     user = [
@@ -52,7 +51,6 @@ def cadastro():
                 "sobrenome": sobrenome,
                 "nascimento": nascimento,
                 "cpf": cpf,
-                "cnpj": cnpj,
                 "email": email,
                 "senha": senha
             }
