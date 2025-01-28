@@ -22,7 +22,7 @@ def login_home_usuario():
 
 @app.route('/usuario', methods=['POST']) #<<--- aqui é uma rota para pagina para fazer o login "('/login')"
 def login_cliente():
-    nome = request.form.get('nome')
+    nome = request.form.get('nome')#  ATENÇÃO É APARTIR DAQUI QUE VAI SER A ALTERAÇÃO  <<<<<<<<<<<<<<<<<<<<<<<<<<-------------------------
     senha = request.form.get('senha')
 
     with open('usuario.json') as usuariotemp :# "whith open" para mostrar o caminho para achar a lista do banco de dados
