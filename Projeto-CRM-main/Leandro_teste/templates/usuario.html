@@ -36,20 +36,25 @@
         .content {
             padding: 20px;
         }
-        .header {
-            background: linear-gradient(145deg, #14213d, #1d3557);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+    
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 12000px;
             margin: 0 auto;
         }
+        .footer {
+            color: white;
+            padding: 0rem 0;
+            margin-top: auto;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 80%;
+        }
+        
+
         .logo {
             display: flex;
             align-items: center;
@@ -59,7 +64,7 @@
             margin-right: 40px;
         }
         .menu-lateral {
-            width: 260px;
+            width: 280px;
             background: linear-gradient(145deg, #14213d, #1d3557);
             height: 100vh;
             position: fixed;
@@ -140,10 +145,10 @@
     <div class="menu-lateral">
         <button onclick="novaRequisicao()">Nova Requisição</button>
         <button onclick="consultarRequisicao()">Consultar Requisição</button>
+        <button onclick="historico()">Histórico</button>
         <button onclick="sair()">Sair</button>
     </div>
-
-
+    
     <div class="modal" id="modal-nova">
         <div class="modal-conteudo">
             <h2>Nova Requisição</h2>
@@ -229,7 +234,7 @@
             document.getElementById('formulario-servico').style.display = tipo === 'Serviço' ? 'block' : 'none';
         }
 
-        function habilitarDescricaoServico() {
+        function habilitarDescricaoServico() { //* tipo e descrição do serviço
             const tipoServico = document.getElementById('tipo-servico').value;
             const descricaoServico = document.getElementById('descricao-servico');
             const btnEnviar = document.getElementById('btn-enviar-servico');
@@ -242,69 +247,98 @@
                 btnEnviar.disabled = true;
             }
         }
+function enviarRequisicao(tipo) {
+    const descricao = tipo === 'Produto' 
+        ? document.getElementById('descricao-produto').value 
+        : document.getElementById('descricao-servico').value;
 
-        function enviarRequisicao(tipo) {
-            const descricao = tipo === 'Produto' 
-                ? document.getElementById('descricao-produto').value 
-                : document.getElementById('descricao-servico').value;
-            const setor = document.getElementById('setor').value;
-            const tipoEspecifico = tipo === 'Serviço' 
-                ? document.getElementById('tipo-servico').value 
-                : null;
+    const setor = document.getElementById('setor').value;
+    const tipoEspecifico = tipo === 'Serviço' 
+        ? document.getElementById('tipo-servico').value 
+        : null;
 
-            ultimaRequisicao = {
-                numero: gerarNumeroRequisicao(),
-                tipo: tipo,
-                setor: setor,
-                tipoEspecifico: tipoEspecifico,
-                descricao: descricao
-            };
+    ultimaRequisicao = {
+        numero: gerarNumeroRequisicao(),
+        tipo: tipo,
+        setor: setor,
+        tipoEspecifico: tipoEspecifico,
+        descricao: descricao,
+        data: new Date().toLocaleString(),
+        status: 'Pendente'
+    };
 
-            alert(`Requisição de ${tipo} enviada com sucesso! Número: ${ultimaRequisicao.numero}`);
-            document.getElementById('modal-nova').style.display = 'none';
-        }
+    alert(`Requisição de ${tipo} enviada com sucesso! Número: ${ultimaRequisicao.numero}`);
+    document.getElementById('modal-nova').style.display = 'none';
+}
 
-        function consultarRequisicao() {
-            if (!ultimaRequisicao) {
-                alert('Não há requisições recentes.');
-                return;
-            }
+function mostrarDetalhes() {
+    const detalhesRequisicao = document.getElementById('detalhes-requisicao');
+    detalhesRequisicao.innerHTML = `
+        <p>Número: ${ultimaRequisicao.numero}</p>
+        <p>Data: ${ultimaRequisicao.data}</p>
+        <p>Status: ${ultimaRequisicao.status}</p>
+        <p>Tipo: ${ultimaRequisicao.tipo}</p>
+        <p>Setor: ${ultimaRequisicao.setor}</p>
+        ${ultimaRequisicao.tipoEspecifico ? `<p>Tipo de Serviço: ${ultimaRequisicao.tipoEspecifico}</p>` : ''}
+        <p>Descrição: ${ultimaRequisicao.descricao}</p>
+    `;
+    detalhesRequisicao.style.display = 'block';
+}
 
-            const modalConsulta = document.getElementById('modal-consulta');
-            const btnNumeroRequisicao = document.getElementById('numero-requisicao');
-            
-            btnNumeroRequisicao.textContent = ultimaRequisicao.numero;
-            modalConsulta.style.display = 'flex';
-        }
+function consultarRequisicao() {
+    if (!ultimaRequisicao) {
+        alert('Não há requisições recentes.');
+        return;
+    }
 
-        function mostrarDetalhes() {
-            const detalhesRequisicao = document.getElementById('detalhes-requisicao');
-            detalhesRequisicao.innerHTML = `
-                <p>Tipo: ${ultimaRequisicao.tipo}</p>
-                <p>Setor: ${ultimaRequisicao.setor}</p>
-                ${ultimaRequisicao.tipoEspecifico ? `<p>Tipo de Serviço: ${ultimaRequisicao.tipoEspecifico}</p>` : ''}
-                <p>Descrição: ${ultimaRequisicao.descricao}</p>
-            `;
-            detalhesRequisicao.style.display = 'block';
-        }
+    const modalConsulta = document.getElementById('modal-consulta');
+    const btnNumeroRequisicao = document.getElementById('numero-requisicao');
+    
+    btnNumeroRequisicao.textContent = ultimaRequisicao.numero;
+    modalConsulta.style.display = 'flex';
+}
 
-        function statusRequisicao() {
-            if (!ultimaRequisicao) {
-                alert('Não há requisições recentes.');
-                return;
-            }
+function atualizarStatusRequisicao(novoStatus) {
+    if (ultimaRequisicao) {
+        ultimaRequisicao.status = novoStatus;
+        alert(`Status da requisição ${ultimaRequisicao.numero} atualizado para: ${novoStatus}`);
+    }
+}
 
-            const statusRequisicao = document.getElementById('status-requisicao');
-            const status = ['andamento', 'concluido', 'reprovado'][Math.floor(Math.random() * 3)];
+function formatarData(data) {
+    return new Date(data).toLocaleString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
 
-            statusRequisicao.innerHTML = `
-                Número: ${ultimaRequisicao.numero} 
-                <span class="status-${status}">
-                    ${status.charAt(0).toUpperCase() + status.slice(1)}
-                </span>
-            `;
-            document.getElementById('modal-status').style.display = 'flex';
-        }
+function verificarAutorizacaoAdmin() {
+    return true;
+}
+
+function handleAtualizacaoStatus(numeroRequisicao, novoStatus) {
+    if (verificarAutorizacaoAdmin()) {
+        atualizarStatusRequisicao(novoStatus);
+    } else {
+        alert('Acesso negado. Apenas administradores podem atualizar o status.');
+    }
+}
+
+function mostrarStatus() {
+    const statusRequisicao = document.getElementById('status-requisicao');
+    const status = ['andamento', 'concluido', 'reprovado'][Math.floor(Math.random() * 3)];
+
+    statusRequisicao.innerHTML = `
+        Número: ${ultimaRequisicao.numero} 
+        <span class="status-${status}">
+            ${status.charAt(0).toUpperCase() + status.slice(1)}
+        </span>
+    `;
+    document.getElementById('modal-status').style.display = 'flex';
+}
 
         function sair() {
             window.location.href = 'TRIVIUM.html'; // Volta para página principal
@@ -320,5 +354,13 @@
         };
       
     </script>
+     <!-- RODAPE -->
+     <footer class="footer">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 TRIVIUM. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
