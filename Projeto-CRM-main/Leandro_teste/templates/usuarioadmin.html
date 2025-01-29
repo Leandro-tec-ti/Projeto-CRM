@@ -104,6 +104,46 @@
             background-color: var(--secondary-color);
             border-color: var(--secondary-color);
         }
+
+        * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Arial', sans-serif;
+  }
+
+  .menu-lateral {
+    position: relative;
+  }
+
+  .menu-lateral button {
+    background-color: #14213d;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .menu-lateral button:hover {
+    background-color: #e01f7d;
+    color: #14213d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .menu-lateral button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
     </style>
 </head>
 <body>
@@ -116,6 +156,9 @@
             </div>
         </div>
     </header>
+    <div class="menu-lateral">
+        <button onclick="sair()">Sair</button>
+      </div>
 
     <!-- Main Content -->
     <div class="main-content">
@@ -194,6 +237,18 @@
             </div>
         </div>
     </div>
+    <script>function sair() {
+        window.location.href = 'TRIVIUM.html'; // Volta para página principal
+    }
+
+    window.onclick = function(event) {
+        const modals = document.getElementsByClassName('modal');
+        for (let modal of modals) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    };</script>
 
     <!-- Footer -->
     <footer class="footer">
