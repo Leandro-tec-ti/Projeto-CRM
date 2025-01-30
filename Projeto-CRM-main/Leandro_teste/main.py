@@ -6,7 +6,7 @@ app.config['SECRET_KEY'] = "LEANDRO"
 
 @app.route('/')   #<<--- rota para direcionar pagina de entrada do site "('/')"
 def home():
-    return render_template('rotavendas.html')
+    return render_template('Lirioshome.html')
 
 @app.route('/cadastro.html')   #<<--- rota para direcionar para a página de cadastro
 def cadastro_page():
@@ -35,6 +35,21 @@ def login_cliente():
             
         flash('USUÁRIO INVÁLIDO')
         return redirect(url_for('login_cliente'))
+    
+@app.route('/usuarioadmin', methods=['POST'])
+def login_admin():  # Changed function name to avoid duplicate
+    nome = request.form.get('nome')
+    senha = request.form.get('senha')
+    
+    with open('usuarioadmin.json') as usuariotemp:
+        usuarios = json.load(usuariotemp)
+        
+        for usuario in usuarios:
+            if usuario['nome'] == nome and usuario['senha'] == senha:
+                return render_template('usuarioadmin.html', nome=nome)  # Fixed template variable passing
+        
+        flash('USUÁRIO INVÁLIDO')
+        return redirect(url_for('usuarioadmin'))
 
 @app.route('/cadastro', methods=['POST']) #<<--- aqui é uma rota para pagina para fazer o login "('/cadastro')"
 def cadastro():
@@ -66,9 +81,9 @@ def cadastro():
     flash('Cadastro realizado com sucesso!')
     return redirect('/login_cliente.html')
 
-@app.route('/rotavendas.html')
+@app.route('/Lirioshome.html')
 def rotavendas():
-    return render_template('rotavendas.html')
+    return render_template('Lirioshome.html')
 
 if __name__ == '__main__' :
     app.run(debug=True)
