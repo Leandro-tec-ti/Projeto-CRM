@@ -126,6 +126,27 @@
         textarea {
             resize: absolute;
         }
+        .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #14213d;
+    cursor: pointer;
+    width: auto;
+    padding: 5px;
+    margin: 0;
+}
+
+.close-btn:hover {
+    color: #e01f7d;
+}
+
+.modal-conteudo {
+    position: relative;
+}
         .status-andamento { color: #FFC107; font-weight: bold; font-style: italic; }
         .status-concluido { color: #4CAF50; font-weight: bold; font-style: italic; }
         .status-reprovado { color: #F44336; font-weight: bold; font-style: italic; }
@@ -151,6 +172,7 @@
     
     <div class="modal" id="modal-nova">
         <div class="modal-conteudo">
+            <button class="close-btn" onclick="fecharModal('modal-nova')">&times;</button>
             <h2>Nova Requisição</h2>
             <button id="btn-setor" onclick="abrirSetor()">Qual o seu setor?</button>
             <div id="opcoes-setor" style="display: absolute;">
@@ -170,6 +192,7 @@
                     <div id="formulario-produto" style="display: none;">
                         <textarea id="descricao-produto" placeholder="Descreva os produtos necessários"></textarea>
                         <button onclick="enviarRequisicao('Produto')">Enviar Requisição</button>
+                        <i class="fa-duotone fa-regular fa-xmark"></i>
                     </div>
                     <div id="formulario-servico" style="display: none;">
                         <select id="tipo-servico" onchange="habilitarDescricaoServico()">
@@ -185,6 +208,7 @@
                         </select>
                         <textarea id="descricao-servico" placeholder="Descreva o serviço necessário" disabled></textarea>
                         <button id="btn-enviar-servico" onclick="enviarRequisicao('Serviço')" disabled>Enviar Requisição</button>
+                        <i class="fa-duotone fa-regular fa-xmark"></i>
                     </div>
                 </div>
             </div>
@@ -193,9 +217,11 @@
 
     <div class="modal" id="modal-consulta">
         <div class="modal-conteudo">
+            <button class="close-btn" onclick="fecharModal('modal-consulta')">&times;</button>
             <h2>Aqui está seu histórico de solicitação:</h2>
             <button id="numero-requisicao" onclick="mostrarDetalhes()"></button>
             <div id="detalhes-requisicao" style="display: none;"></div>
+            <i class="fa-duotone fa-regular fa-xmark"></i>
         </div>
     </div>
 
@@ -203,6 +229,7 @@
         <div class="modal-conteudo">
             <h2>Confira o andamento da sua solicitação:</h2>
             <div id="status-requisicao"></div>
+            <i class="fa-duotone fa-regular fa-xmark"></i>
         </div>
     </div>
 
@@ -352,6 +379,11 @@ function mostrarStatus() {
                 }
             }
         };
+        
+function fecharModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
       
     </script>
      <!-- RODAPE -->
