@@ -30,7 +30,13 @@ def login_cliente():
         
         # Validando as login e senha do usuário
         for usuario in usuarios:
-            if usuario['nome'] == nome and usuario['senha'] == senha:
+            if usuario == 'admin' and senha == '000':
+                return render_template('usuarioadmin.html')
+            
+            elif usuario != 'admin' and senha != 000:
+                return render_template('login_cliente.html')
+            
+            elif usuario['nome'] == nome and usuario['senha'] == senha:
                 return render_template('usuario.html', nome)
             
         flash('USUÁRIO INVÁLIDO')
