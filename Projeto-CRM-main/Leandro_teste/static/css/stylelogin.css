@@ -11,8 +11,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url('/Projeto-CRM-main/Leandro_teste/static/img/fundologin.png') center/cover no-repeat fixed;
-            background-color: #1d3557;
+            background-image: url('../img/fundologin.png');
+            background-size: cover;
+            background-position: top center; /* Centraliza horizontalmente e alinha no topo */
+            background-repeat: no-repeat; /* Impede repetição da imagem */
         }
 
         .container {
