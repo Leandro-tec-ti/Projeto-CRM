@@ -82,7 +82,7 @@ def cadastro():
     return redirect('/login_cliente.html')
 
 @app.route('/Lirioshome.html')
-def rotavendas():
+def Lirioshome():
     return render_template('Lirioshome.html')
 
 if __name__ == '__main__' :

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisição de compras</title>
+    <link rel="icon" type="image/x-icon" href="/Projeto-CRM-main/Leandro_teste/static/img/liriosbranco.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+    height: 100%; /* Garante que o body ocupe 100% da altura da viewport */
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Remove barras de rolagem */
+        }
+
+        body {
+        margin: 0;
+        padding: 0;
+        background-image: url('../static/img/imghomecliente.png');
+        background-size: 100% 87.5%; /* Estica a imagem para cobrir 100% da largura e altura */
+        background-repeat: no-repeat;
+        background-position: bottom; /* Centraliza a imagem */
+        min-height: 100vh; /* Garante que cubra toda a altura da viewport */
+        overflow: hidden; /* Impede rolagem */
+        }
+        
+        header {
+            background: linear-gradient(145deg, #14213d, #1d3557);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .content {
+            padding: 20px;
+        }
+    
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 12000px;
+            margin: 0 auto;
+        }
+        .footer {
+            color: white;
+            padding: 0rem 0;
+            margin-top: auto;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 80%;
+        }
+        
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 80px;
+            margin-right: 40px;
+        }
+        .menu-lateral {
+            width: 280px;
+            background: linear-gradient(145deg, #14213d, #1d3557);
+            height: 100vh;
+            position: fixed;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+        .menu-lateral button {
+            background-color: transparent;
+            color: white;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            padding: 15px 20px;
+            width: 90%;
+            margin: 10px 0;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .menu-lateral button:hover {
+            background-color: #0077b6;
+            transform: scale(1.05);
+        }
+       
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-conteudo {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 500px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+          
+    
+        select, textarea, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 1px;
+        }
+        textarea {
+            resize: absolute;
+        }
+        .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #14213d;
+    cursor: pointer;
+    width: auto;
+    padding: 5px;
+    margin: 0;
+}
+
+.close-btn:hover {
+    color: #e01f7d;
+}
+
+.modal-conteudo {
+    position: relative;
+}
+        .status-andamento { color: #FFC107; font-weight: bold; font-style: italic; }
+        .status-concluido { color: #4CAF50; font-weight: bold; font-style: italic; }
+        .status-reprovado { color: #F44336; font-weight: bold; font-style: italic; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="../static/img/liriosbranco1.png" alt="Logo">
+                <h1>Sistema de Gestão de Requisições</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="menu-lateral">
+        <button onclick="novaRequisicao()">Nova Requisição</button>
+        <button onclick="consultarRequisicao()">Consultar Requisição</button>
+        <button onclick="historico()">Histórico</button>
+        <button onclick="sair()">Sair</button>
+    </div>
+    
+    <div class="modal" id="modal-nova">
+        <div class="modal-conteudo">
+            <button class="close-btn" onclick="fecharModal('modal-nova')">&times;</button>
+            <h2>Nova Requisição</h2>
+            <button id="btn-setor" onclick="abrirSetor()">Qual o seu setor?</button>
+            <div id="opcoes-setor" style="display: absolute;">
+                <select id="setor" onchange="mostrarTipoRequisicao()">
+                    <option value="">Selecione o setor...</option>
+                    <option value="Administrativo">Administrativo</option>
+                    <option value="Secretaria">Secretaria</option>
+                    <option value="Comercial">Comercial</option>
+                    <option value="Estoque">Estoque</option>
+                </select>
+                <div id="opcoes-tipo" style="display: none;">
+                    <select id="tipo-requisicao" onchange="mostrarFormulario()">
+                        <option value="">Selecione o tipo de requisição...</option>
+                        <option value="Produto">Produto</option>
+                        <option value="Serviço">Serviço</option>
+                    </select>
+                    <div id="formulario-produto" style="display: none;">
+                        <textarea id="descricao-produto" placeholder="Descreva os produtos necessários"></textarea>
+                        <button onclick="enviarRequisicao('Produto')">Enviar Requisição</button>
+                        <i class="fa-duotone fa-regular fa-xmark"></i>
+                    </div>
+                    <div id="formulario-servico" style="display: none;">
+                        <select id="tipo-servico" onchange="habilitarDescricaoServico()">
+                            <option value="">Selecione o tipo de serviço</option>
+                            <option value="Elétrica">Elétrica</option>
+                            <option value="Mecânico">Mecânico</option>
+                            <option value="Alvenaria">Alvenaria</option>
+                            <option value="Hidráulico">Hidráulico</option>
+                            <option value="Pintura">Pintura</option>
+                            <option value="Jardinagem e Paisagismo">Jardinagem e Paisagismo</option>
+                            <option value="Limpeza e Conservação">Limpeza e Conservação</option>
+                            <option value="Mobiliário">Mobiliário</option>
+                        </select>
+                        <textarea id="descricao-servico" placeholder="Descreva o serviço necessário" disabled></textarea>
+                        <button id="btn-enviar-servico" onclick="enviarRequisicao('Serviço')" disabled>Enviar Requisição</button>
+                        <i class="fa-duotone fa-regular fa-xmark"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-consulta">
+        <div class="modal-conteudo">
+            <button class="close-btn" onclick="fecharModal('modal-consulta')">&times;</button>
+            <h2>Aqui está seu histórico de solicitação:</h2>
+            <button id="numero-requisicao" onclick="mostrarDetalhes()"></button>
+            <div id="detalhes-requisicao" style="display: none;"></div>
+            <i class="fa-duotone fa-regular fa-xmark"></i>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-status">
+        <div class="modal-conteudo">
+            <h2>Confira o andamento da sua solicitação:</h2>
+            <div id="status-requisicao"></div>
+            <i class="fa-duotone fa-regular fa-xmark"></i>
+        </div>
+    </div>
+
+    <script>
+        let ultimaRequisicao = null;
+
+        function gerarNumeroRequisicao() {
+            return Math.floor(10000 + Math.random() * 90000);
+        }
+
+        function novaRequisicao() {
+            document.getElementById('modal-nova').style.display = 'flex';
+        }
+
+        function abrirSetor() {
+            document.getElementById('opcoes-setor').style.display = 'block';
+        }
+
+        function mostrarTipoRequisicao() {
+            const setor = document.getElementById('setor').value;
+            if (setor) {
+                document.getElementById('opcoes-tipo').style.display = 'block';
+            }
+        }
+
+        function mostrarFormulario() {
+            const tipo = document.getElementById('tipo-requisicao').value;
+            document.getElementById('formulario-produto').style.display = tipo === 'Produto' ? 'block' : 'none';
+            document.getElementById('formulario-servico').style.display = tipo === 'Serviço' ? 'block' : 'none';
+        }
+
+        function habilitarDescricaoServico() { //* tipo e descrição do serviço
+            const tipoServico = document.getElementById('tipo-servico').value;
+            const descricaoServico = document.getElementById('descricao-servico');
+            const btnEnviar = document.getElementById('btn-enviar-servico');
+
+            if (tipoServico) {
+                descricaoServico.disabled = false;
+                btnEnviar.disabled = false;
+            } else {
+                descricaoServico.disabled = true;
+                btnEnviar.disabled = true;
+            }
+        }
+function enviarRequisicao(tipo) {
+    const descricao = tipo === 'Produto' 
+        ? document.getElementById('descricao-produto').value 
+        : document.getElementById('descricao-servico').value;
+
+    const setor = document.getElementById('setor').value;
+    const tipoEspecifico = tipo === 'Serviço' 
+        ? document.getElementById('tipo-servico').value 
+        : null;
+
+    ultimaRequisicao = {
+        numero: gerarNumeroRequisicao(),
+        tipo: tipo,
+        setor: setor,
+        tipoEspecifico: tipoEspecifico,
+        descricao: descricao,
+        data: new Date().toLocaleString(),
+        status: 'Pendente'
+    };
+
+    alert(`Requisição de ${tipo} enviada com sucesso! Número: ${ultimaRequisicao.numero}`);
+    document.getElementById('modal-nova').style.display = 'none';
+}
+
+function mostrarDetalhes() {
+    const detalhesRequisicao = document.getElementById('detalhes-requisicao');
+    detalhesRequisicao.innerHTML = `
+        <p>Número: ${ultimaRequisicao.numero}</p>
+        <p>Data: ${ultimaRequisicao.data}</p>
+        <p>Status: ${ultimaRequisicao.status}</p>
+        <p>Tipo: ${ultimaRequisicao.tipo}</p>
+        <p>Setor: ${ultimaRequisicao.setor}</p>
+        ${ultimaRequisicao.tipoEspecifico ? `<p>Tipo de Serviço: ${ultimaRequisicao.tipoEspecifico}</p>` : ''}
+        <p>Descrição: ${ultimaRequisicao.descricao}</p>
+    `;
+    detalhesRequisicao.style.display = 'block';
+}
+
+function consultarRequisicao() {
+    if (!ultimaRequisicao) {
+        alert('Não há requisições recentes.');
+        return;
+    }
+
+    const modalConsulta = document.getElementById('modal-consulta');
+    const btnNumeroRequisicao = document.getElementById('numero-requisicao');
+    
+    btnNumeroRequisicao.textContent = ultimaRequisicao.numero;
+    modalConsulta.style.display = 'flex';
+}
+
+function atualizarStatusRequisicao(novoStatus) {
+    if (ultimaRequisicao) {
+        ultimaRequisicao.status = novoStatus;
+        alert(`Status da requisição ${ultimaRequisicao.numero} atualizado para: ${novoStatus}`);
+    }
+}
+
+function formatarData(data) {
+    return new Date(data).toLocaleString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
+
+function verificarAutorizacaoAdmin() {
+    return true;
+}
+
+function handleAtualizacaoStatus(numeroRequisicao, novoStatus) {
+    if (verificarAutorizacaoAdmin()) {
+        atualizarStatusRequisicao(novoStatus);
+    } else {
+        alert('Acesso negado. Apenas administradores podem atualizar o status.');
+    }
+}
+
+function mostrarStatus() {
+    const statusRequisicao = document.getElementById('status-requisicao');
+    const status = ['andamento', 'concluido', 'reprovado'][Math.floor(Math.random() * 3)];
+
+    statusRequisicao.innerHTML = `
+        Número: ${ultimaRequisicao.numero} 
+        <span class="status-${status}">
+            ${status.charAt(0).toUpperCase() + status.slice(1)}
+        </span>
+    `;
+    document.getElementById('modal-status').style.display = 'flex';
+}
+
+        function sair() {
+            window.location.href = 'Lirioshome.html'; // Volta para página principal
+        }
+
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let modal of modals) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        };
+        
+function fecharModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+      
+    </script>
+     <!-- RODAPE -->
+     <footer class="footer">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 TRIVIUM. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -8,21 +8,17 @@
     <link rel="icon" type="image/x-icon" href="../static/img/liriosbranco.png">
 </head>
 <body>
-    
-</head>
-<body>
     <div class="container">
         <h1>Login</h1>
-        <form action="/usuario" id="loginform" method="POST"></form>
-        <div class="tabs">
-            <button class="tab active" onclick="switchTab(this, 'user')">Usuário</button>
-            <button class="tab" onclick="switchTab(this, 'admin')">Administrador</button>
-        </div>
-        
-        
+        <form action="/usuario" id="loginform" method="POST">
+            <div class="tabs">
+                <button type="button" class="tab active" onclick="switchTab(this, 'user')">Usuário</button>
+                <button type="button" class="tab" onclick="switchTab(this, 'admin')">Administrador</button>
+            </div>
+            
             <div class="form-group">
-                <label for="usuario">usuario</label>
-                <input type="usuario" id="usuario" placeholder="Seu usuario" required>
+                <label for="usuario">Usuário</label>
+                <input type="text" id="usuario" placeholder="Seu usuário" required>
             </div>
 
             <div class="form-group">
@@ -35,33 +31,33 @@
     </div>
     
     <script>
-        let currentUserType = 'user'; // Default user type
+        let currentUserType = 'user'; // Tipo de usuário padrão
 
         function switchTab(element, type) {
-            // Remove active class from all tabs
+            // Remove a classe ativa de todas as abas
             document.querySelectorAll('.tab').forEach(tab => {
                 tab.classList.remove('active');
             });
             
-            // Add active class to clicked tab
+            // Adiciona a classe ativa à aba clicada
             element.classList.add('active');
             currentUserType = type;
         }
 
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        document.getElementById('loginform').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form values
-            const email = document.getElementById('email').value;
+            // Obtém os valores do formulário
+            const usuario = document.getElementById('usuario').value;
             const password = document.getElementById('password').value;
 
-            // Basic validation
-            if (email && password) {
-                // Redirect based on user type
+            // Validação básica
+            if (usuario && password) {
+                // Redireciona com base no tipo de usuário
                 if (currentUserType === 'admin') {
-                    window.location.href = '/Projeto-CRM-main/Leandro_teste/templates/usuarioadmin.html';
+                    window.location.href = '/static/usuarioadmin.html';
                 } else {
-                    window.location.href = '/Projeto-CRM-main/Leandro_teste/templates/usuario.html';
+                    window.location.href = '/static/usuario.html';
                 }
             } else {
                 alert('Por favor, preencha todos os campos!');
@@ -70,3 +66,4 @@
     </script>
 </body>
 </html>
+
