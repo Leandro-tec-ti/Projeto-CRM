@@ -8,25 +8,49 @@
     <link rel="icon" type="image/x-icon" href="../static/img/liriosbranco.png">
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-header">
-            
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form action="/usuario" id="loginform" method="POST"></form>
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab(this, 'user')">Usuário</button>
+            <button class="tab" onclick="switchTab(this, 'admin')">Administrador</button>
         </div>
-        <form action="/usuario" method="POST">
-            <div class="mb-3">
-                <label for="usuario" class="form-label">Usuário</label>
-                <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Digite seu usuário" required>
+        
+        
+            <div class="form-group">
+                <label for="usuario">usuario</label>
+                <input type="usuario" id="usuario" placeholder="Seu usuario" required>
             </div>
-            <div class="mb-3">
-                <label for="senha" class="form-label">Senha</label>
-                <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite sua senha" required>
+
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" placeholder="Sua senha" required>
             </div>
+
             <button type="submit">Entrar</button>
         </form>
-        <div class="login-footer">
-            <p>Esqueceu sua senha? <a href=".................">Recuperar</a></p>
-        </div>
     </div>
+    
+    <script>
+        function switchTab(element, type) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Add active class to clicked tab
+            element.classList.add('active');
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your login logic here
+        });
+    </script>
 </body>
 </html>
+
 

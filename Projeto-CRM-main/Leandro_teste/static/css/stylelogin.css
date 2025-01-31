@@ -1,85 +1,99 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-image: url('../img/homebemvindo.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top center;
-    display: flex;
-    justify-content: flex-start; /* Alinhamento horizontal à esquerda */
-    align-items: flex-start;
-    height: 100vh;
-}
 
-.login-container {
-    background: rgba(249, 250, 251, 0.748);
-    padding: 35px;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(181, 7, 7, 0.1);
-    width: 100%;
-    max-width: 400px;
-    position: relative;
-    top: 47%; /* Ajusta a altura da jaela de login */
-    left: 13%; /* Desloca para a esquerda */
-    transform: translateY(0);
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-.login-header {
-    text-align: center;
-    margin-bottom: 5px;
-}
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('/Projeto-CRM-main/Leandro_teste/static/img/fundologin.png') center/cover no-repeat fixed;
+            background-color: #1d3557;
+        }
 
-label {
-    display: block;
-    text-align: center;
-    font-size: 1.3rem;
-}
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin: 1rem;
+        }
 
-label {
-    font-weight: arial;
-    color: #05272e;
-}
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
 
-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 7px;
-    border: 1.3px solid #151853;
-    border-radius: 50px;
-    font-size: 1.2rem;
-}
-button {
-    width: 100%;
-    padding: 10px; 
-    background-color: #05272e;
-    color: #fff;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 105%;
-}
+        .tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+        }
 
-button:hover {
-    background-color: #2980b9;
-}
+        .tab {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+        }
 
-.login-footer {
-    text-align: center;
-    margin-top: 6px;
-    font-size: 1.2rem;
-    color: #05272e;
-}
+        .tab.active {
+            background: #1d3557;
+            font-weight: bold;
+        }
 
-.login-footer a {
-    color: #234765;
-    text-decoration: none;
-    font-weight: bold;
-}
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
 
-.login-footer a:hover {
-    text-decoration: underline;
-}
+        .form-group label {
+            display: block;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: #aaadb1;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background: #152a45;
+        }
