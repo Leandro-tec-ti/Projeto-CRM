@@ -35,6 +35,8 @@
     </div>
     
     <script>
+        let currentUserType = 'user'; // Default user type
+
         function switchTab(element, type) {
             // Remove active class from all tabs
             document.querySelectorAll('.tab').forEach(tab => {
@@ -43,14 +45,28 @@
             
             // Add active class to clicked tab
             element.classList.add('active');
+            currentUserType = type;
         }
 
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Add your login logic here
+            
+            // Get form values
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Basic validation
+            if (email && password) {
+                // Redirect based on user type
+                if (currentUserType === 'admin') {
+                    window.location.href = '/Projeto-CRM-main/Leandro_teste/templates/usuarioadmin.html';
+                } else {
+                    window.location.href = '/Projeto-CRM-main/Leandro_teste/templates/usuario.html';
+                }
+            } else {
+                alert('Por favor, preencha todos os campos!');
+            }
         });
     </script>
 </body>
 </html>
-
-
